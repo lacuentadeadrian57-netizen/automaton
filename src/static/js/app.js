@@ -16,6 +16,7 @@ class App {
         this.back_btn = document.getElementById("back_btn")
         this.fordward_btn = document.getElementById("fordward_btn")
         this.toggle_btn = document.getElementById("toggle_btn")
+        this.reset_btn = document.getElementById("reset_btn")
 
         this.play_icon = document.getElementById("play_icon")
         this.pause_icon = document.getElementById("pause_icon")
@@ -73,6 +74,23 @@ class App {
                 }
 
                 this.playing = !this.playing
+            }
+        )
+
+        this.reset_btn.addEventListener(
+            "click",
+            () => {
+                if (this.playing){
+                    this.play_icon.classList.remove("off")
+                    this.pause_icon.classList.add("off")
+                    this.toggle_btn.style.setProperty("--main-color", "#00ae00")
+                    this.playing = false
+                }
+                for (const row of this.items) {
+                    for (const cell of row) {
+                        cell.classList.remove("on")
+                    }
+                }
             }
         )
     }
